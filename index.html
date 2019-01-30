@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>FormBlogs</title>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js'></script>
+  <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+
+  <link rel="stylesheet" href="css/style.css">
+  <link rel='stylesheet' href='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css'>
+
+
+
+</head>
+
+<body>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/tabletop.js/1.5.1/tabletop.min.js'></script>
+  <script type='text/javascript'>
+    var dataGlobal;
+    var publicSpreadsheetUrl =
+      "https://docs.google.com/spreadsheets/d/1E11-MvtZuxvNKfh3ljyvt2Tvt2_d0NZ_DyPYIQLibjA/edit?usp=sharing";
+
+    function init() {
+      Tabletop.init({
+        key: publicSpreadsheetUrl,
+        callback: showInfo,
+        simpleSheet: true
+      })
+    }
+
+    function showInfo(data, tabletop) {
+      console.log('Successfully processed!');
+      console.log(data);
+      var i;
+      for (i = 0; i < data.length; i++) {
+        var mainDiv = document.getElementById("info");
+        var newContRow = document.createElement('div');
+        newContRow.setAttribute('class', "row");
+        var newContRowCol = document.createElement('div');
+        newContRowCol.setAttribute('class', "col-sm");
+        newContRowCol.innerHTML = "<h3>" + data[i].Title + "</h3>" + "<span class=\"text - left\">" +
+          data[i].Timestamp + "&rarr; " + "</span><span class=\"text - right\">" + data[i].Location + "</span>";
+
+        console.log("[Loop] " + i);
+
+
+        newContRow.appendChild(newContRowCol);
+
+        var newContRowColBody = document.createElement('div');
+        newContRowColBody.setAttribute('class', "postBody");
+        newContRowColBody.innerHTML = marked(data[i].Post);
+        newContRowCol.appendChild(newContRowColBody);
+
+
+
+        while (newContRow.firstChild) {
+          mainDiv.appendChild(newContRow.firstChild);
+        }
+      }
+      var images = document.getElementsByTagName('img');
+      console.log(images);
+      if (images) {
+        for (i = 0; i < images.length; i++) {
+          images[i].setAttribute('class', 'img-fluid');
+          console.log("[LoopImg] " + i);
+        }
+      }
+
+
+
+    }
+
+    window.addEventListener('DOMContentLoaded', init);
+  </script>
+
+  <div class="container">
+    <nav class="navbar navbar-light bg-light sticky-top navbar-expand{-sm|-md|-lg|-xl}">
+      <span class="navbar-brand">
+        Wierd Manifestations
+      </span>
+
+      <div class="my-2 my-lg-0">
+
+        <a class="nav-link" href="#">About</a>
+
+      </div>
+    </nav>
+  </div>
+  <div class="container main" id="info">
+
+  </div>
+
+  </div>
+
+  </div>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.2.1/js/bootstrap.min.js'></script>
+  <script src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/popper.min.js'></script>
+
+
+
+
+</body>
+
+</html>
