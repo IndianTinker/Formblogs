@@ -40,8 +40,8 @@
         newContRow.setAttribute('class', "row");
         var newContRowCol = document.createElement('div');
         newContRowCol.setAttribute('class', "col-sm");
-        newContRowCol.innerHTML = "<h3>" + data[i].Title + "</h3>" + "<span class=\"text - left\">" +
-          data[i].Timestamp + "&rarr; " + "</span><span class=\"text - right\">" + data[i].Location + "</span>";
+        newContRowCol.innerHTML = "<h3>" + data[i].Title + "</h3>" + "<span class=\"light\">" +
+          data[i].Timestamp + "->" + "</span><span class=\"light\">" + data[i].Location + "</span>";
 
         console.log("[Loop] " + i);
 

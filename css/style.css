@@ -1,25 +1,38 @@
-@import url('https://fonts.googleapis.com/css?family=Nunito+Sans:100,400');
+@import url('https://rsms.me/inter/inter.css');
+
+html {
+  font-family: 'Inter', sans-serif;
+  font-feature-settings: 'calt'1;
+}
+
+@supports (font-variation-settings: normal) {
+  html {
+    font-family: 'Inter var', sans-serif;
+  }
+}
+
 
 .container {
-  font-family: 'Nunito Sans', sans-serif;
+  font-family: 'Inter', sans-serif;
   padding-right: 2%;
   padding-left: 2%;
+}
+
+.light {
+  font-weight: 300;
 }
 
 .postBody {
   margin-top: 2%;
   margin-bottom: 5%;
 
-  font-family: 'Nunito Sans',
-    sans-serif;
   font-weight: 400;
-
+  font-family: 'Inter', sans-serif;
   border-bottom: 1px dashed grey;
 }
 
 .main {
-  font-family: 'Nunito Sans',
-    sans-serif;
+
   padding-top: 5%;
 }
 
@@ -32,8 +45,6 @@ img {
 }
 
 .light {
-  font-family: 'Nunito Sans',
-    sans-serif;
   font-weight: 100;
 }
 
